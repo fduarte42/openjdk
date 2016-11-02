@@ -1,10 +1,10 @@
 #!/bin/sh
 
 if [ -f "Main.java" ]; then
-    echo "compiling Main.java"
+    echo "compiling..."
     $BUILD_CMD
     if [ -f "Main.class" ]; then
-        echo "executing Main"
+        echo "executing..."
         exec $EXEC_CMD
     fi
 else
