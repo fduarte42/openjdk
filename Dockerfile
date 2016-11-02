@@ -2,8 +2,8 @@ FROM openjdk:8-jdk-alpine
 
 COPY ./src /usr/src/app
 
-ENV BUILD_CMD "javac Main.java"
-ENV EXEC_CMD "java Main"
+ENV BUILD_CMD "compile.sh"
+ENV EXEC_CMD "startup.sh"
 
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh

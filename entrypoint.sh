@@ -1,13 +1,15 @@
 #!/bin/sh
 
-if [ -f "Main.java" ]; then
+if [ -f "./$BUILD_CMD" ]; then
     echo "compiling..."
-    $BUILD_CMD
-    if [ -f "Main.class" ]; then
+    chmod 755 ./$BUILD_CMD
+    ./$BUILD_CMD
+    if [ -f "./$EXEC_CMD" ]; then
         echo "executing..."
-        exec $EXEC_CMD
+        chmod 755 ./$EXEC_CMD
+        exec ./$EXEC_CMD
     fi
 else
-    echo "no Main class found"
+    echo "no build command found"
     exit 1
 fi
