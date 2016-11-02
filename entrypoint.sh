@@ -2,10 +2,10 @@
 
 if [ -f "Main.java" ]; then
     echo "compiling Main.java"
-    javac Main.java
+    $BUILD_CMD
     if [ -f "Main.class" ]; then
         echo "executing Main"
-        exec java Main
+        exec $EXEC_CMD
     fi
 else
     echo "no Main class found"
