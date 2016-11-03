@@ -1,16 +1,20 @@
 FROM openjdk:8-jdk-alpine
 
-COPY ./src /usr/src/app
+RUN apk update && \
+    apk add apache-ant && \
+    apk add git tar mksh socat
 
-ENV BUILD_CMD "compile.sh"
-ENV EXEC_CMD "startup.sh"
+ENV ANT_HOME /usr/share/java/apache-ant
+ENV PATH $PATH:$ANT_HOME/bin
+
+COPY ./src /opt/app/src
+
+WORKDIR /opt/app/src
 
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
 
-WORKDIR /usr/src/app
-
-VOLUME ["/usr/src/app"]
+VOLUME ["/opt/app"]
 
 EXPOSE 80
 
