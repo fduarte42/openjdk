@@ -14,6 +14,10 @@ WORKDIR /opt/app/src
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
 
+COPY ./restart.sh /restart.sh
+RUN chmod 755 /restart.sh
+
+
 VOLUME ["/opt/app"]
 
 EXPOSE 80
